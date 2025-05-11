@@ -1,0 +1,263 @@
+/* COMP1850 Assignment 04 - CSS Stylesheet
+   This single external CSS file is designed to style all three HTML pages
+   using CSS box model and flexbox layout techniques */
+
+/* ---------- GLOBAL STYLES ---------- */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, Helvetica, sans-serif; /* No default fonts allowed */
+}
+
+body {
+    max-width: 790px; /* As specified in requirements */
+    margin: 0 auto; /* Center the content */
+    background-color: #f5f5f5; /* Light background */
+    color: #333; /* Dark text for readability */
+    line-height: 1.6;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Full viewport height for sticky footer */
+}
+
+/* Main content container */
+main {
+    flex: 1; /* Allow main to grow to push footer down */
+    padding: 20px;
+    background-color: #fff;
+    border-left: 1px solid #ddd;
+    border-right: 1px solid #ddd;
+}
+
+/* ---------- HEADER STYLES ---------- */
+header {
+    background-color: #2c3e50; /* Dark blue header */
+    color: white;
+    padding: 20px;
+    border-bottom: 4px solid #e74c3c; /* Red accent border */
+}
+
+/* Logo styles */
+.logo {
+    width: 65px; /* Fixed size as required */
+    height: auto;
+}
+
+
+/* ---------- NAVIGATION STYLES ---------- */
+nav {
+    background-color: #34495e; /* Slightly lighter than header */
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+}
+
+nav ul {
+    list-style-type: none;
+    display: flex;
+    gap: 20px;
+}
+
+/* All hyperlinks must include full pseudo classing */
+nav a {
+    color: #ecf0f1;
+    text-decoration: none;
+    padding: 5px 10px;
+    border-radius: 3px;
+    transition: all 0.3s ease;
+}
+
+nav a:hover {
+    background-color: #e74c3c;
+    color: white;
+}
+
+nav a:focus {
+    outline: 2px solid #f39c12;
+    background-color: #2c3e50;
+}
+
+nav a:active {
+    background-color: #c0392b;
+    transform: translateY(2px);
+}
+
+/* ---------- SECTION STYLES ---------- */
+section {
+    margin: 20px 0;
+    padding: 15px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+}
+
+/* Make sections visually distinct */
+section:nth-child(odd) {
+    background-color: #eaf2f8;
+    border-color: #a9cce3;
+}
+
+section:nth-child(even) {
+    background-color: #eafaf1;
+    border-color: #a3e4d7;
+}
+
+/* ---------- ARTICLE STYLES ---------- */
+/* For Page01 - articles displayed in a row */
+.articles-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: space-between;
+}
+
+article {
+    border: 1px solid #bdc3c7;
+    padding: 15px;
+    border-radius: 5px;
+    background-color: white;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+/* Equal space distribution for articles */
+.articles-container article {
+    /* Flex grow/shrink/basis will adjust based on number of articles */
+    flex: 1 1 calc(50% - 10px); /* For 2 articles */
+}
+
+.articles-container.three-articles article {
+    flex: 1 1 calc(33.333% - 14px); /* For 3 articles */
+}
+
+/* Article images */
+article img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin-bottom: 10px;
+}
+
+/* ---------- LIST STYLES ---------- */
+/* Unordered lists with custom bullet points */
+ul:not(nav ul) {
+    list-style-image: url('check-mark.jpg'); /* Using the provided image */
+    padding-left: 30px;
+    margin: 15px 0;
+}
+
+/* Ordered lists with custom numbering */
+ol {
+    list-style-type: lower-roman; /* i, ii, iii, etc. */
+    padding-left: 30px;
+    margin: 15px 0;
+}
+
+/* ---------- BLOCKQUOTE & CITE STYLES ---------- */
+blockquote {
+    margin: 20px 0;
+    padding: 15px;
+    border-left: 5px solid #3498db;
+    background-color: #eef7fa;
+    font-style: italic;
+}
+
+cite {
+    display: block;
+    margin-top: 10px;
+    color: #7f8c8d;
+    font-style: normal;
+    font-weight: bold;
+}
+
+/* ---------- PRE & CODE STYLES ---------- */
+pre, code {
+    background-color: #f8f8f8;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 10px;
+    font-family: 'Courier New', Courier, monospace;
+    white-space: pre-wrap;
+    margin: 15px 0;
+}
+
+/* ---------- TABLE STYLES ---------- */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+}
+
+th, td {
+    border: 1px solid #bdc3c7;
+    padding: 10px;
+    text-align: left;
+}
+
+th {
+    background-color: #3498db;
+    color: white;
+}
+
+tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+/* ---------- FOOTER STYLES ---------- */
+footer {
+    background-color: #2c3e50;
+    color: white;
+    padding: 15px 20px;
+    text-align: center;
+    /* Sticky footer technique */
+    margin-top: auto;
+    position: sticky;
+    bottom: 0;
+    width: 100%;
+}
+
+footer a {
+    color: #3498db;
+    text-decoration: none;
+    margin: 0 15px;
+    transition: color 0.3s;
+}
+
+/* Evenly space footer links */
+.footer-links {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+}
+
+footer a:hover, footer a:focus {
+    color: #e74c3c;
+    text-decoration: underline;
+}
+
+footer a:active {
+    color: #f39c12;
+}
+
+/* ---------- RESPONSIVE ADJUSTMENTS ---------- */
+@media (max-width: 600px) {
+    .articles-container {
+        flex-direction: column;
+    }
+    
+    .articles-container article,
+    .articles-container.three-articles article {
+        flex: 1 1 100%;
+    }
+    
+    /* Make images scale for small screens */
+    article img {
+        max-width: 100%;
+        height: auto;
+    }
+}
+
+/* For Page03 - LOW CONTENT page */
+.low-content {
+    min-height: 80vh; /* Ensure the content area is tall enough */
+}
